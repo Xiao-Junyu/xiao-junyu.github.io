@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>阳朔 3天2晚 · 一家三口攻略</title>
+<meta name="description" content="2026.08.17–08.19 阳朔3天2晚一家三口行程：遇龙河竹筏、十里画廊、兴坪古镇、20元人民币背景。">
+<style>
+  :root{
+    --green:#1e6b52;
+    --green-2:#2f8f6d;
+    --green-deep:#14493a;
+    --green-bg:#eaf3ee;
+    --ink:#22322a;
+    --muted:#6b7d73;
+    --line:#dfe9e3;
+    --card:#ffffff;
+    --bg:#f3f7f4;
+    --amber-bg:#fdf6e7;
+    --amber-bd:#eed9a4;
+    --amber-ink:#8a6420;
+    --red-bg:#fdeeee;
+    --red-bd:#f1c6c6;
+    --red-ink:#a33c3c;
+    --blue:#2f6f9f;
+    --orange:#c0731f;
+    --purple:#74599e;
+    --gray:#7d8a84;
+    --radius:16px;
+    --shadow:0 6px 24px rgba(24,58,44,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  section{scroll-margin-top:70px}
+
+  /* ---------- 顶部导航 ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:780px;margin:0 auto;padding:10px 16px;
+    display:flex;align-items:center;gap:14px;
+    overflow-x:auto;scrollbar-width:none;
+  }
+  .nav-inner::-webkit-scrollbar{display:none}
+  .nav-logo{font-weight:800;color:var(--green);white-space:nowrap;font-size:15px}
+  .nav-links{display:flex;gap:4px;flex:1}
+  .nav-links a{
+    text-decoration:none;color:var(--muted);
+    font-size:13.5px;padding:5px 11px;border-radius:999px;
+    white-space:nowrap;transition:.15s;
+  }
+  .nav-links a:hover{background:var(--green-bg);color:var(--green)}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(160deg,#175c46 0%,#1e6b52 45%,#2f8f6d 100%);
+    color:#fff;
+    padding:52px 20px 96px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero .sun{
+    position:absolute;top:44px;right:12%;
+    width:56px;height:56px;border-radius:50%;
+    background:radial-gradient(circle,#ffe9b0 0%,#f5c86a 70%);
+    opacity:.85;filter:blur(.4px);
+  }
+  .hero-mountains{
+    position:absolute;left:0;right:0;bottom:-2px;width:100%;height:120px;
+    display:block;
+  }
+  .hero-tag{
+    display:inline-block;
+    font-size:12.5px;letter-spacing:4px;
+    border:1px solid rgba(255,255,255,.45);
+    border-radius:999px;padding:4px 16px 4px 20px;
+    margin-bottom:18px;opacity:.95;
+  }
+  .hero h1{
+    font-size:clamp(30px,7vw,44px);
+    font-weight:900;letter-spacing:6px;
+    text-shadow:0 3px 14px rgba(0,0,0,.18);
+  }
+  .hero .sub{
+    margin-top:8px;font-size:15px;letter-spacing:2px;opacity:.92;
+  }
+  .hero-badges{
+    margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+  }
+  .hero-badges span{
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:999px;padding:4px 14px;font-size:13px;
+  }
+  .countdown{
+    margin-top:22px;display:inline-block;
+    background:rgba(255,255,255,.92);color:var(--green-deep);
+    font-size:14px;font-weight:700;
+    border-radius:999px;padding:7px 20px;
+    box-shadow:0 4px 16px rgba(0,0,0,.15);
+  }
+
+  /* ---------- 主体布局 ---------- */
+  main{max-width:780px;margin:0 auto;padding:0 16px 40px}
+  .pull-up{margin-top:-52px;position:relative;z-index:5}
+
+  .sec{margin-top:34px}
+  .sec-head{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .sec-num{
+    font-size:12px;font-weight:800;color:var(--green-2);
+    border:1.5px solid var(--green-2);border-radius:6px;
+    padding:1px 7px;letter-spacing:1px;flex-shrink:0;
+  }
+  .sec-head h2{font-size:21px;font-weight:800;letter-spacing:1px}
+  .sec-head .hint{font-size:12.5px;color:var(--muted)}
+
+  .card{
+    background:var(--card);border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:18px 18px 16px;
+    border:1px solid rgba(223,233,227,.8);
+  }
+  .card + .card{margin-top:12px}
+
+  /* ---------- 关键动作 ---------- */
+  .actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:560px){.actions{grid-template-columns:1fr}}
+  .action-card{
+    background:var(--card);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:16px;
+    border-top:4px solid var(--green-2);
+  }
+  .action-card.warn-top{border-top-color:#dfa13c}
+  .action-card h3{font-size:15px;margin-bottom:8px}
+  .action-card .desc{font-size:13px;color:var(--muted);margin-bottom:10px}
+
+  /* ---------- 表格 ---------- */
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line)}
+  th{font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:1px}
+  td.day-col{font-weight:700;color:var(--green);white-space:nowrap}
+  .tbl-note{font-size:12.5px;color:var(--muted);margin-top:8px}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+
+  /* ---------- 提示框 ---------- */
+  .note,.warnbox,.alertbox{
+    border-radius:10px;padding:10px 13px;
+    font-size:13.5px;margin-top:10px;line-height:1.65;
+  }
+  .note{background:var(--green-bg);color:#2b5c48}
+  .warnbox{background:var(--amber-bg);border:1px solid var(--amber-bd);color:var(--amber-ink)}
+  .alertbox{background:var(--red-bg);border:1px solid var(--red-bd);color:var(--red-ink)}
+  .note b,.warnbox b,.alertbox b{font-weight:700}
+
+  /* ---------- 日程标签页 ---------- */
+  .tabs{display:flex;gap:8px;margin-bottom:14px}
+  .tab-btn{
+    flex:1;border:1.5px solid var(--line);background:#fff;
+    border-radius:12px;padding:9px 6px;cursor:pointer;
+    font-size:14px;font-weight:700;color:var(--muted);
+    transition:.18s;font-family:inherit;
+  }
+  .tab-btn small{display:block;font-size:11px;font-weight:400;margin-top:1px}
+  .tab-btn.active{
+    background:var(--green);border-color:var(--green);color:#fff;
+    box-shadow:0 5px 16px rgba(30,107,82,.32);
+  }
+  .tab-btn.active small{color:rgba(255,255,255,.8)}
+  .tab-pane{display:none}
+  .tab-pane.active{display:block;animation:fadein .25s ease}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* ---------- 时间轴 ---------- */
+  .timeline{position:relative;padding-left:10px}
+  .tl-item{
+    position:relative;
+    display:flex;gap:12px;
+    padding:10px 0 14px;
+  }
+  .tl-item::before{
+    content:"";position:absolute;left:86px;top:0;bottom:-6px;
+    width:2px;background:var(--line);
+  }
+  .tl-item:last-child::before{display:none}
+  .tl-time{
+    flex-shrink:0;width:76px;
+    font-size:12.5px;font-weight:800;color:var(--green-2);
+    padding-top:5px;text-align:right;font-variant-numeric:tabular-nums;
+  }
+  .tl-body{
+    flex:1;position:relative;
+    background:var(--card);border-radius:12px;
+    border:1px solid rgba(223,233,227,.9);
+    box-shadow:0 3px 12px rgba(24,58,44,.05);
+    padding:10px 14px;margin-left:16px;
+  }
+  .tl-item[data-type="key"] .tl-body{border-left:3px solid #d9534f}
+  .tl-item[data-type="sight"] .tl-body{border-left:3px solid var(--green-2)}
+  .tl-item[data-type="food"] .tl-body{border-left:3px solid var(--orange)}
+  .tl-item[data-type="transport"] .tl-body{border-left:3px solid var(--blue)}
+  .tl-item[data-type="rest"] .tl-body{border-left:3px solid var(--gray)}
+  .tl-body::before{
+    content:"";position:absolute;left:-23px;top:15px;
+    width:11px;height:11px;border-radius:50%;
+    background:#fff;border:3px solid var(--green-2);
+  }
+  .tl-item[data-type="key"] .tl-body::before{border-color:#d9534f}
+  .tl-item[data-type="food"] .tl-body::before{border-color:var(--orange)}
+  .tl-item[data-type="transport"] .tl-body::before{border-color:var(--blue)}
+  .tl-item[data-type="rest"] .tl-body::before{border-color:var(--gray)}
+  .tl-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tl-head h4{font-size:15px;font-weight:700}
+  .badge{
+    font-size:10.5px;font-weight:700;letter-spacing:1px;
+    padding:1px 8px;border-radius:999px;flex-shrink:0;
+  }
+  .b-key{background:#fdecec;color:#c0392b}
+  .b-sight{background:var(--green-bg);color:var(--green)}
+  .b-food{background:#fdeede;color:var(--orange)}
+  .b-transport{background:#e7f0f8;color:var(--blue)}
+  .b-rest{background:#eef0ef;color:var(--gray)}
+  .tl-body p{font-size:13.5px;color:#40514a;margin-top:5px}
+  .tl-body .note,.tl-body .warnbox,.tl-body .alertbox{margin-top:8px;font-size:12.8px}
+
+  /* ---------- 勾选清单 ---------- */
+  .checklist{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+  @media (max-width:560px){.checklist{grid-template-columns:1fr}}
+  .check-item{
+    display:flex;align-items:flex-start;gap:10px;
+    cursor:pointer;padding:6px 8px;border-radius:8px;
+    transition:.12s;font-size:14px;user-select:none;
+  }
+  .check-item:hover{background:var(--green-bg)}
+  .check-item input{display:none}
+  .check-item .box{
+    flex-shrink:0;width:20px;height:20px;margin-top:3px;
+    border:2px solid #b9cdc2;border-radius:6px;
+    position:relative;transition:.15s;background:#fff;
+  }
+  .check-item input:checked + .box{
+    background:var(--green-2);border-color:var(--green-2);
+  }
+  .check-item input:checked + .box::after{
+    content:"";position:absolute;left:5px;top:1.5px;
+    width:6px;height:11px;border:solid #fff;
+    border-width:0 2.5px 2.5px 0;transform:rotate(45deg);
+  }
+  .check-item input:checked ~ .txt{
+    color:var(--muted);text-decoration:line-through;
+  }
+  .check-item .txt b{font-weight:700}
+
+  /* ---------- 打包进度 ---------- */
+  .progress-wrap{margin-bottom:14px}
+  .progress-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:6px}
+  .progress-top button{
+    border:none;background:none;color:var(--green-2);
+    font-size:12.5px;cursor:pointer;font-family:inherit;padding:2px 6px;
+  }
+  .progress-track{height:8px;background:#e4ede8;border-radius:999px;overflow:hidden}
+  .progress-bar{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--green-2),var(--green));transition:.3s}
+
+  /* ---------- 竹筏专题 ---------- */
+  .raft-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  @media (max-width:560px){.raft-grid{grid-template-columns:1fr}}
+  .raft-opt{
+    border:1.5px dashed #bcd6ca;border-radius:12px;padding:12px 14px;
+  }
+  .raft-opt.first{border-style:solid;border-color:var(--green-2);background:linear-gradient(180deg,#f2f9f5,#fff)}
+  .raft-opt .rank{
+    display:inline-block;font-size:11px;font-weight:800;
+    background:var(--green);color:#fff;border-radius:6px;padding:1px 8px;margin-bottom:6px;letter-spacing:1px;
+  }
+  .raft-opt.second .rank{background:#8aa598}
+  .raft-opt h4{font-size:15px;margin-bottom:4px}
+  .raft-opt p{font-size:13px;color:var(--muted)}
+  .big-time{
+    text-align:center;background:linear-gradient(135deg,#1e6b52,#2f8f6d);
+    color:#fff;border-radius:12px;padding:14px;margin-bottom:4px;
+  }
+  .big-time .t{font-size:26px;font-weight:900;letter-spacing:2px}
+  .big-time .d{font-size:13px;opacity:.9;margin-top:2px}
+
+  /* ---------- 住宿 ---------- */
+  .hotel-areas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+  .chip{
+    background:var(--green-bg);color:var(--green);
+    font-size:13px;font-weight:600;
+    border-radius:999px;padding:4px 14px;
+  }
+  .hotel-list{font-size:14px}
+  .hotel-list li{margin:4px 0 4px 20px}
+
+  /* ---------- 一句话路线 ---------- */
+  .route-line{
+    display:flex;gap:10px;align-items:flex-start;
+    padding:10px 0;border-bottom:1px dashed var(--line);
+    font-size:14px;
+  }
+  .route-line:last-of-type{border-bottom:none}
+  .route-line .d{
+    flex-shrink:0;font-weight:800;color:#fff;font-size:12px;
+    background:var(--green-2);border-radius:8px;padding:2px 9px;margin-top:3px;
+  }
+  .route-line b{color:var(--green)}
+
+  footer{
+    text-align:center;color:var(--muted);
+    font-size:12.5px;padding:26px 20px 40px;
+  }
+  footer .heart{color:#d9534f}
+
+  @media print{
+    .nav,.countdown,.progress-wrap,.tab-btn{display:none!important}
+    .tab-pane{display:block!important}
+    body{background:#fff}
+    .card,.tl-body{box-shadow:none}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-logo">🏔 阳朔行</span>
+    <div class="nav-links">
+      <a href="#overview">总览</a>
+      <a href="#days">三天行程</a>
+      <a href="#raft">竹筏抢票</a>
+      <a href="#hotel">住宿</a>
+      <a href="#budget">预算</a>
+      <a href="#packing">打包清单</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="sun" aria-hidden="true"></div>
+  <span class="hero-tag">家 庭 出 行 计 划</span>
+  <h1>阳朔 · 3天2晚</h1>
+  <p class="sub">一家三口的山水轻旅行 · 轻松玩，不赶桂林市区</p>
+  <div class="hero-badges">
+    <span>📅 2026.08.17（周一）— 08.19（周三）</span>
+    <span>👨‍👩‍👧 妈妈 + 我 + 妹妹</span>
+    <span>🚄 东莞 → 广州南 → 阳朔</span>
+  </div>
+  <div class="countdown" id="countdown">加载中…</div>
+  <svg class="hero-mountains" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,200 L0,140 L110,86 L230,150 L350,66 L470,140 L610,36 L750,140 L890,76 L1030,150 L1170,56 L1310,140 L1440,92 L1440,200 Z" fill="rgba(255,255,255,.08)"/>
+    <path d="M0,200 L0,168 L150,116 L290,180 L440,106 L590,170 L750,86 L900,170 L1070,116 L1230,180 L1440,124 L1440,200 Z" fill="rgba(255,255,255,.14)"/>
+    <path d="M0,200 L0,188 L190,148 L390,192 L550,140 L750,192 L950,146 L1150,192 L1310,160 L1440,186 L1440,200 Z" fill="rgba(255,255,255,.22)"/>
+  </svg>
+</header>
+
+<main>
+
+  <!-- ======== 总览 ======== -->
+  <div class="pull-up">
+    <section id="overview" class="sec">
+      <div class="sec-head"><span class="sec-num">01</span><h2>出发前必办</h2><span class="hint">越早越好</span></div>
+      <div class="actions">
+        <div class="action-card">
+          <h3>🏨 订酒店</h3>
+          <p class="desc">8/17 入住 · 8/19 退房 · 共2晚<br>2成人 + 1儿童，家庭房优先</p>
+          <div class="checklist">
+            <label class="check-item"><input type="checkbox" data-key="pre-hotel"><span class="box"></span><span class="txt">已订好酒店</span></label>
+            <label class="check-item"><input type="checkbox" data-key="pre-room"><span class="box"></span><span class="txt">确认房型（家庭房/双床）</span></label>
+          </div>
+        </div>
+        <div class="action-card">
+          <h3>🎫 买返程票</h3>
+          <p class="desc">8/19（周三）阳朔 → 广州南<br>优先 17:30–19:00 出发的车次</p>
+          <div class="checklist">
+            <label class="check-item"><input type="checkbox" data-key="pre-back"><span class="box"></span><span class="txt">已购返程高铁票</span></label>
+            <label class="check-item"><input type="checkbox" data-key="pre-dg"><span class="box"></span><span class="txt">想好广州南→东莞怎么回</span></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-head"><span class="sec-num">02</span><h2>三天总览</h2></div>
+      <div class="card">
+        <table>
+          <tr><th>日期</th><th>上午</th><th>下午</th><th>晚上</th></tr>
+          <tr><td class="day-col">8/17 周一</td><td>东莞→广州南</td><td>D1892→阳朔→酒店</td><td>晚饭→20:00抢竹筏→西街</td></tr>
+          <tr><td class="day-col">8/18 周二</td><td>遇龙河人工竹筏</td><td>午休→十里画廊→工农桥</td><td>晚饭、自由活动</td></tr>
+          <tr><td class="day-col">8/19 周三</td><td>退房→兴坪古镇→20元背景</td><td>兴坪休息→阳朔站</td><td>高铁回广州南→东莞</td></tr>
+        </table>
+        <div class="note">🚄 <b>已购去程：</b>D1892 广州南 14:27 → 阳朔 16:44（历时2小时17分，三人约¥380）。检票口显示 <b>12 或 B12</b>，以当天12306和车站大屏为准。最迟 <b>13:20–13:30 到广州南站</b>。</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== 三天行程 ======== -->
+  <section id="days" class="sec">
+    <div class="sec-head"><span class="sec-num">03</span><h2>三天详细行程</h2><span class="hint">点击切换日期</span></div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-target="pane-d1">DAY 1<small>8/17 周一 · 抵达+西街</small></button>
+      <button class="tab-btn" data-target="pane-d2">DAY 2<small>8/18 周二 · 竹筏+画廊</small></button>
+      <button class="tab-btn" data-target="pane-d3">DAY 3<small>8/19 周三 · 兴坪+返程</small></button>
+    </div>
+
+    <!-- DAY 1 -->
+    <div id="pane-d1" class="tab-pane active">
+      <div class="timeline">
+
+        <div class="tl-item" data-type="transport">
+          <div class="tl-time">11:30–13:20</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-transport">交通</span><h4>东莞 → 广州南</h4></div>
+            <div class="alertbox">⏰ <b>硬要求：13:20–13:30 前到广州南站。</b></div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="key">
+          <div class="tl-time">13:30–14:10</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-key">关键</span><h4>进站、安检、找检票口</h4></div>
+            <p>检查三人身份证；看12306/车站大屏确认检票口（票面12或B12）；不要卡最后十分钟进站。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="transport">
+          <div class="tl-time">14:27–16:44</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-transport">高铁</span><h4>D1892 广州南 → 阳朔</h4></div>
+            <p>历时2小时17分。车上可以先把晚饭吃什么想好、把酒店订单和抢票入口准备好。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="transport">
+          <div class="tl-time">16:44–17:10</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-transport">抵达</span><h4>阳朔站出站</h4></div>
+            <div class="warnbox">⚠️ <b>阳朔站不在阳朔县城，在兴坪方向</b>（距县城约30公里）。</div>
+            <p>下车先：① 上厕所 ② 清点行李 ③ 出站 ④ 打开高德/滴滴看价格。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="transport">
+          <div class="tl-time">17:10–18:10</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-transport">交通</span><h4>阳朔站 → 酒店</h4></div>
+            <p><b>方案A · 高铁专线：</b>三人大约 ¥60 量级，按班次发车。<br><b>方案B · 网约车：</b>≤¥100 直接打；¥100–120 也比较值；&gt;¥140 优先考虑专线接驳。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="rest">
+          <div class="tl-time">18:10–18:30</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-rest">入住</span><h4>办理入住</h4></div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="food">
+          <div class="tl-time">18:30–19:20</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-food">晚餐</span><h4>晚饭 · 预算 ¥120–180</h4></div>
+            <p>第一晚不建议专门去西街排网红店。如果吃啤酒鱼，必须先问清四件事：</p>
+            <p>① 什么鱼 ② 多少钱一斤 ③ 这条多重 ④ 做完总价多少</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="key">
+          <div class="tl-time">19:25–20:00</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-key">关键</span><h4>回酒店 · 准备抢票</h4></div>
+            <p>19:45 打开遇龙河官方购票入口；19:55 三人证件备好、手机充电、网络稳定。</p>
+            <div class="alertbox">🎯 <b>20:00 准时抢 8月18日 遇龙河竹筏</b>（详见「竹筏抢票」专题）。</div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="sight">
+          <div class="tl-time">20:30–22:00</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-sight">夜景</span><h4>西街夜游</h4></div>
+            <p>西街老街 · 夜景 · 漓江边 · 小吃。22:00–22:30 回酒店休息。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div id="pane-d2" class="tab-pane">
+      <div class="timeline">
+
+        <div class="tl-item" data-type="rest">
+          <div class="tl-time">06:40</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-rest">起床</span><h4>起床</h4></div>
+            <p>07:00–07:30 早餐。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="transport">
+          <div class="tl-time">07:30</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-transport">出发</span><h4>酒店 → 遇龙河码头</h4></div>
+            <p>按最终订单时间，<b>至少提前 20–30 分钟</b>到码头。</p>
+            <div class="note">🎒 必带：三人身份证件、手机、防水袋、防晒、帽子、水。</div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="key">
+          <div class="tl-time">08:00–09:30</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-key">核心</span><h4>遇龙河人工竹筏漂流</h4></div>
+            <p>具体时间按订单。人工撑筏，慢节奏看山水，是一家人最舒服的体验段。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="sight">
+          <div class="tl-time">09:30–10:30</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-sight">拍照</span><h4>遇龙河岸边 / 田园拍照</h4></div>
+            <p>10:30–11:10 回县城 / 酒店附近。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="food">
+          <div class="tl-time">11:15–12:15</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-food">午餐</span><h4>午饭 · 预算 ¥100–150</h4></div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="rest">
+          <div class="tl-time">12:30–15:00</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-rest">午休</span><h4>酒店午休</h4></div>
+            <div class="note">💡 <b>这一段不要删。</b>8月正午高温高湿，一家三口没必要把旅游玩成拉练。15:00 起床先看天气和雷达图。</div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="sight">
+          <div class="tl-time">15:20–18:20</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-sight">核心</span><h4>十里画廊</h4></div>
+            <p>推荐线路：<b>凤鸣 → 十里画廊北入口 → 工农桥 → 遇龙河边 → 月亮山方向远眺 → 返回</b></p>
+            <p>不用刷遍沿途所有收费景点，重点是自然景观；傍晚比中午漂亮、舒服。</p>
+            <div class="note">🚲 交通方式建议：一家三口可选电动车 / 景区观光车 / 包车，8月下午骑行较热，量力选择。</div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="sight">
+          <div class="tl-time">16:10–17:10</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-sight">拍照</span><h4>工农桥</h4></div>
+            <p>适合休息、拍照、看山水。是遇龙河与十里画廊的交汇点。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="food">
+          <div class="tl-time">18:30–19:30</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-food">晚餐</span><h4>晚饭</h4></div>
+            <p>20:00 以后自由活动，早点休息。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div id="pane-d3" class="tab-pane">
+      <div class="timeline">
+
+        <div class="tl-item" data-type="rest">
+          <div class="tl-time">07:00–08:00</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-rest">早晨</span><h4>起床 · 早餐 · 退房</h4></div>
+            <p>07:00 起床整理行李；07:20–07:50 早餐；<b>08:00 退房</b>。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="transport">
+          <div class="tl-time">08:10–09:00</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-transport">交通</span><h4>阳朔县城 → 兴坪</h4></div>
+            <p>三个人带行李，如果网约车价格合理，直接打车最省心（约40–50分钟）。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="key">
+          <div class="tl-time">09:00</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-key">关键</span><h4>寄存行李</h4></div>
+            <p>先问清两件事：① 按件还是按小时收费 ② 营业到几点。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="sight">
+          <div class="tl-time">09:10–09:50</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-sight">古镇</span><h4>兴坪古镇</h4></div>
+            <p>免费，不用预约。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="key">
+          <div class="tl-time">10:00–11:20</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-key">核心</span><h4>20元人民币背景</h4></div>
+            <p>公共观景区域免费，不用预约。</p>
+            <div class="alertbox">💰 记得带 <b>一张20元人民币现金</b> 对照打卡！</div>
+            <div class="note">📷 经典机位在漓江对岸（大河背村方向），需过渡船，往返约¥10–20/人；不想过江就在江边步道拍，角度略偏。</div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="sight">
+          <div class="tl-time">11:20–12:00</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-sight">散步</span><h4>漓江边散步、拍照</h4></div>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="food">
+          <div class="tl-time">12:00–13:00</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-food">午餐</span><h4>午饭 · 预算 ¥100–150</h4></div>
+            <p>13:00–14:30 找咖啡店 / 室内休息，避开正午高温。</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-type="transport">
+          <div class="tl-time">14:30 以后</div>
+          <div class="tl-body">
+            <div class="tl-head"><span class="badge b-transport">返程</span><h4>按车次倒推 · 前往阳朔站</h4></div>
+            <p>原则：<b>至少提前 60–75 分钟到阳朔站</b>取行李、进站。</p>
+            <div class="note">✅ 好消息：<b>阳朔高铁站就在兴坪镇</b>，从古镇取完行李过去约10–15分钟车程，第三天动线非常顺。</div>
+            <div class="note">🚄 返程选 17:30–19:00 出发的车次，到广州南后再回东莞；记得预留广州南的换乘时间。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 竹筏专题 ======== -->
+  <section id="raft" class="sec">
+    <div class="sec-head"><span class="sec-num">04</span><h2>遇龙河竹筏 · 抢票专题</h2><span class="hint">本次行程最重要的一件事</span></div>
+
+    <div class="card">
+      <div class="big-time">
+        <div class="t">8/17 · 20:00</div>
+        <div class="d">抢 8月18日 竹筏票 · 19:55 进入官方购票页面待命</div>
+      </div>
+
+      <div class="raft-grid">
+        <div class="raft-opt first">
+          <span class="rank">第一选择</span>
+          <h4>兴隆码头 · 三人筏</h4>
+          <p>正好一家三口同筏；优先抢 08:00–09:30 时段。</p>
+        </div>
+        <div class="raft-opt second">
+          <span class="rank">第二选择</span>
+          <h4>富里桥 · 四人筏</h4>
+          <p>更平稳；如果妈妈不喜欢冲坝，更适合。</p>
+        </div>
+      </div>
+
+      <div class="warnbox">⚠️ <b>出发前务必核实（重要）：</b>遇龙河竹筏近年通常执行 <b>每筏限乘2名游客</b> 的安全规定，部分码头对携带小孩另有安排——「三人同筏」不一定能实现。请提前在官方公众号「遇龙河景区」确认码头、载客规则与放票时间。若需拆成 <b>2条筏</b>，预算需从 ¥210–270 上调至约 <b>¥360–480</b>。</div>
+
+      <h4 style="margin:16px 0 8px;font-size:14.5px">🎯 抢票前准备清单</h4>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox" data-key="raft-id1"><span class="box"></span><span class="txt">妈妈身份证件</span></label>
+        <label class="check-item"><input type="checkbox" data-key="raft-id2"><span class="box"></span><span class="txt">我的身份证件</span></label>
+        <label class="check-item"><input type="checkbox" data-key="raft-id3"><span class="box"></span><span class="txt">妹妹身份证件</span></label>
+        <label class="check-item"><input type="checkbox" data-key="raft-bat"><span class="box"></span><span class="txt">手机电量充足</span></label>
+        <label class="check-item"><input type="checkbox" data-key="raft-net"><span class="box"></span><span class="txt">网络稳定</span></label>
+        <label class="check-item"><input type="checkbox" data-key="raft-ready"><span class="box"></span><span class="txt">19:55 已进入官方购票页面</span></label>
+      </div>
+
+      <div class="note">💡 抢不到第一选择不要慌：先保住 8/18 上午任一码头任一时段，第二选择（富里桥）也很好。同时可在美团/携程官方店铺作为备用渠道比对。</div>
+    </div>
+
+    <div class="card">
+      <h3 style="font-size:15.5px;margin-bottom:6px">🌧 雨天备用方案</h3>
+      <p style="font-size:14px;color:#40514a"><b>普通小雨：</b>景区正常开放则按官方安排继续。<br><b>雷暴 / 官方停漂：</b>不要硬去码头，可调整为 <b>银子岩</b> 等室内/洞穴类项目（门票约¥65–85/人，县城出发车程约30–40分钟，以现场为准），晚上继续关注第二天竹筏开放情况。</p>
+    </div>
+  </section>
+
+  <!-- ======== 住宿 ======== -->
+  <section id="hotel" class="sec">
+    <div class="sec-head"><span class="sec-num">05</span><h2>住宿指南</h2></div>
+    <div class="card">
+      <p style="font-size:14px;margin-bottom:10px">不要住西街最核心、最吵的位置。优先在以下区域搜索：</p>
+      <div class="hotel-areas">
+        <span class="chip">凤鸣旅游集散中心</span>
+        <span class="chip">抗战路</span>
+        <span class="chip">阳朔汽车客运站</span>
+        <span class="chip">十里画廊北入口</span>
+      </div>
+      <p style="font-size:14px;margin:8px 0 4px"><b>优先搜索酒店：</b></p>
+      <ul class="hotel-list">
+        <li>欢漫酒店（桂林阳朔西街十里画廊店）</li>
+        <li>桔子酒店（桂林阳朔十里画廊店）</li>
+        <li>桂林阳朔十里画廊抗战路亚朵酒店</li>
+      </ul>
+      <p style="font-size:13px;color:var(--muted);margin-top:8px">搜索设置：2026-08-17 入住 / 2026-08-19 离店 · 2成人+1儿童 · 房型：家庭房 &gt; 两张1.35m双床 &gt; 其他</p>
+
+      <table style="margin-top:12px">
+        <tr><th>两晚总价</th><th>判断</th></tr>
+        <tr><td class="num">≤ ¥650</td><td>很划算 ✅</td></tr>
+        <tr><td class="num">¥650–800</td><td>推荐 👍</td></tr>
+        <tr><td class="num">¥800–950</td><td>暑期正常</td></tr>
+        <tr><td class="num">¥950–1100</td><td>继续比较</td></tr>
+        <tr><td class="num">&gt; ¥1100</td><td>除非房间明显更好，否则换</td></tr>
+      </table>
+      <div class="note">💡 8/17–8/19 是周一到周三（非周末），价格和人流量相对友好；亚朵等中高端品牌暑期可能超出上表区间，属正常现象。</div>
+    </div>
+  </section>
+
+  <!-- ======== 预算 ======== -->
+  <section id="budget" class="sec">
+    <div class="sec-head"><span class="sec-num">06</span><h2>预算</h2><span class="hint">一家三口</span></div>
+    <div class="card">
+      <table>
+        <tr><th>项目</th><th style="text-align:right">金额</th></tr>
+        <tr><td>去程高铁（已付）</td><td class="num"><b>¥380</b></td></tr>
+        <tr><td>返程高铁</td><td class="num">约 ¥380–500</td></tr>
+        <tr><td>酒店 2 晚</td><td class="num">¥650–900</td></tr>
+        <tr><td>遇龙河竹筏</td><td class="num">¥210–270 *</td></tr>
+        <tr><td>阳朔本地交通</td><td class="num">¥250–400</td></tr>
+        <tr><td>三天正餐</td><td class="num">¥500–700</td></tr>
+        <tr><td>零食饮料</td><td class="num">¥100–150</td></tr>
+        <tr><td>行李寄存等</td><td class="num">¥20–50</td></tr>
+        <tr><td><b>预计合计</b></td><td class="num"><b>约 ¥2550–3340</b></td></tr>
+      </table>
+      <p class="tbl-note">* 若按现行「每筏限乘2人」规则需订 2 条筏，竹筏项约 ¥360–480，总预算相应上调至约 ¥2700–3550。</p>
+    </div>
+  </section>
+
+  <!-- ======== 打包清单 ======== -->
+  <section id="packing" class="sec">
+    <div class="sec-head"><span class="sec-num">07</span><h2>打包清单</h2><span class="hint">勾选自动保存进度</span></div>
+    <div class="card">
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <span id="pack-progress-text">已打包 0 / 16</span>
+          <button id="pack-reset" type="button">重置清单</button>
+        </div>
+        <div class="progress-track"><div class="progress-bar" id="pack-progress-bar"></div></div>
+      </div>
+      <div class="checklist" id="packing-list">
+        <label class="check-item"><input type="checkbox" data-key="pack-01"><span class="box"></span><span class="txt"><b>三个人的身份证件原件</b></span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-02"><span class="box"></span><span class="txt">手机</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-03"><span class="box"></span><span class="txt">充电器</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-04"><span class="box"></span><span class="txt">充电宝</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-05"><span class="box"></span><span class="txt">防晒霜</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-06"><span class="box"></span><span class="txt">帽子</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-07"><span class="box"></span><span class="txt">折叠伞</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-08"><span class="box"></span><span class="txt">轻薄雨衣</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-09"><span class="box"></span><span class="txt">驱蚊用品</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-10"><span class="box"></span><span class="txt">手机防水袋</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-11"><span class="box"></span><span class="txt">舒适防滑鞋</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-12"><span class="box"></span><span class="txt">小瓶饮用水</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-13"><span class="box"></span><span class="txt">常用肠胃药</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-14"><span class="box"></span><span class="txt">晕车药（如有需要）</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-15"><span class="box"></span><span class="txt">塑料袋 / 密封袋</span></label>
+        <label class="check-item"><input type="checkbox" data-key="pack-16"><span class="box"></span><span class="txt"><b>一张20元人民币</b></span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 一句话路线 ======== -->
+  <section class="sec">
+    <div class="sec-head"><span class="sec-num">08</span><h2>最终路线 · 一句话版</h2></div>
+    <div class="card">
+      <div class="route-line"><span class="d">8/17</span><span>东莞→广州南→阳朔→酒店→<b>20:00抢竹筏</b>→西街</span></div>
+      <div class="route-line"><span class="d">8/18</span><span>遇龙河竹筏→午休→十里画廊→工农桥</span></div>
+      <div class="route-line"><span class="d">8/19</span><span>兴坪古镇→<b>20元人民币背景</b>→阳朔站→广州南→东莞</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>🏔 阳朔 · 3天2晚 · 一家三口 <span class="heart">♥</span></p>
+  <p style="margin-top:6px">临出发前涉及车次、天气、竹筏开放状态，以 12306 与景区官方当天信息为准</p>
+</footer>
+
+<script>
+(function(){
+  /* ---- 日期标签页切换 ---- */
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var tabPanes = document.querySelectorAll('.tab-pane');
+  tabBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabBtns.forEach(function(b){ b.classList.remove('active'); });
+      tabPanes.forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      var pane = document.getElementById(btn.dataset.target);
+      if (pane) pane.classList.add('active');
+    });
+  });
+
+  /* ---- 勾选状态本地保存 ---- */
+  var STORE_KEY = 'ys_trip_checks_v1';
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (e) { state = {}; }
+
+  var boxes = document.querySelectorAll('.check-item input[type=checkbox]');
+  boxes.forEach(function(cb){
+    if (state[cb.dataset.key]) cb.checked = true;
+    cb.addEventListener('change', function(){
+      if (cb.checked) state[cb.dataset.key] = 1;
+      else delete state[cb.dataset.key];
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
+      updateProgress();
+    });
+  });
+
+  function updateProgress(){
+    var wrap = document.getElementById('packing-list');
+    if (!wrap) return;
+    var all = wrap.querySelectorAll('input[type=checkbox]');
+    var done = wrap.querySelectorAll('input[type=checkbox]:checked');
+    document.getElementById('pack-progress-text').textContent = '已打包 ' + done.length + ' / ' + all.length;
+    document.getElementById('pack-progress-bar').style.width = (all.length ? done.length / all.length * 100 : 0) + '%';
+  }
+
+  var resetBtn = document.getElementById('pack-reset');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      document.querySelectorAll('#packing-list input[type=checkbox]').forEach(function(cb){
+        cb.checked = false;
+        delete state[cb.dataset.key];
+      });
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
+      updateProgress();
+    });
+  }
+  updateProgress();
+
+  /* ---- 出发倒计时 ---- */
+  var depart = new Date('2026-08-17T14:27:00+08:00');
+  var end = new Date('2026-08-19T23:59:59+08:00');
+  var cdEl = document.getElementById('countdown');
+  function tick(){
+    var now = new Date();
+    if (now < depart) {
+      var ms = depart - now;
+      var d = Math.floor(ms / 86400000);
+      var h = Math.floor(ms % 86400000 / 3600000);
+      cdEl.innerHTML = '⏳ 距出发还有 <b>' + d + '</b> 天 <b>' + h + '</b> 小时';
+    } else if (now <= end) {
+      cdEl.innerHTML = '🎉 行程进行中 · 注意防暑防晒';
+    } else {
+      cdEl.innerHTML = '🎒 行程已结束，欢迎回家';
+    }
+  }
+  tick();
+  setInterval(tick, 60000);
+})();
+</script>
+
+</body>
+</html>
