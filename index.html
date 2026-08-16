@@ -111,7 +111,11 @@
     font-size:14px;font-weight:700;
     border-radius:999px;padding:7px 20px;
     box-shadow:0 4px 16px rgba(0,0,0,.15);
+    transition:background .4s;
   }
+  .countdown.st-train{color:#1d4f74}
+  .countdown.st-trip{background:linear-gradient(135deg,#ffe9b0,#f6cd77);color:#7a5210}
+  .countdown.st-after{background:rgba(255,255,255,.82);color:var(--muted)}
 
   /* ---------- 主体布局 ---------- */
   main{max-width:780px;margin:0 auto;padding:0 16px 40px}
@@ -849,25 +853,59 @@
   }
   updateProgress();
 
-  /* ---- 出发倒计时 ---- */
-  var depart = new Date('2026-08-17T14:27:00+08:00');
-  var end = new Date('2026-08-19T23:59:59+08:00');
+  /* ---- 动态状态计时：出发前倒计时 → 高铁途中 → 旅行中正计时 → 行程结束 ---- */
+  var depart  = new Date('2026-08-17T14:27:00+08:00'); // D1892 广州南发车
+  var arrive  = new Date('2026-08-17T16:44:00+08:00'); // D1892 到达阳朔
+  var day1    = new Date('2026-08-17T00:00:00+08:00'); // 行程第1天
+  var tripEnd = new Date('2026-08-19T23:59:59+08:00'); // 行程结束
   var cdEl = document.getElementById('countdown');
+
+  function split(ms){
+    var s = Math.max(0, Math.floor(ms / 1000));
+    return {
+      d: Math.floor(s / 86400),
+      h: Math.floor(s % 86400 / 3600),
+      m: Math.floor(s % 3600 / 60),
+      s: s % 60
+    };
+  }
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
   function tick(){
     var now = new Date();
+    var cls = 'countdown';
+    var html;
     if (now < depart) {
-      var ms = depart - now;
-      var d = Math.floor(ms / 86400000);
-      var h = Math.floor(ms % 86400000 / 3600000);
-      cdEl.innerHTML = '⏳ 距出发还有 <b>' + d + '</b> 天 <b>' + h + '</b> 小时';
-    } else if (now <= end) {
-      cdEl.innerHTML = '🎉 行程进行中 · 注意防暑防晒';
+      // 出发前：倒计时；不足一天时精确到秒
+      var t = split(depart - now);
+      html = t.d > 0
+        ? '⏳ 距出发还有 <b>' + t.d + '</b> 天 <b>' + t.h + '</b> 小时'
+        : '⏳ 距出发还有 <b>' + t.h + '</b> 小时 <b>' + pad(t.m) + '</b> 分 <b>' + pad(t.s) + '</b> 秒';
+    } else if (now < arrive) {
+      // 高铁行驶中：距到达阳朔
+      var r = split(arrive - now);
+      html = r.h > 0
+        ? '🚄 D1892 行驶中 · 距到达阳朔 <b>' + r.h + '</b> 小时 <b>' + pad(r.m) + '</b> 分'
+        : '🚄 D1892 行驶中 · 距到达阳朔 <b>' + r.m + '</b> 分 <b>' + pad(r.s) + '</b> 秒';
+      cls += ' st-train';
+    } else if (now <= tripEnd) {
+      // 旅行中：第几天 + 在阳朔停留正计时
+      var dayNo = Math.min(3, Math.floor((now - day1) / 86400000) + 1);
+      var e = split(now - arrive);
+      var stay = e.d > 0
+        ? '已在阳朔 <b>' + e.d + '</b> 天 <b>' + e.h + '</b> 小时'
+        : '已在阳朔 <b>' + e.h + '</b> 小时 <b>' + pad(e.m) + '</b> 分';
+      html = '🎉 旅行进行中 · 第 <b>' + dayNo + '/3</b> 天 · ' + stay;
+      cls += ' st-trip';
     } else {
-      cdEl.innerHTML = '🎒 行程已结束，欢迎回家';
+      html = '🎒 行程已结束 · 3天2晚 · 欢迎回家';
+      cls += ' st-after';
     }
+    cdEl.className = cls;
+    cdEl.innerHTML = html;
   }
   tick();
-  setInterval(tick, 60000);
+  setInterval(tick, 1000);
 })();
 </script>
 
