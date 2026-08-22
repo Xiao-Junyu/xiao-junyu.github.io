@@ -54,10 +54,11 @@ h1 { margin: 0; font-size: clamp(25px, 4vw, 38px); letter-spacing: -.035em; }
   background: #000;
   outline: none;
   cursor: crosshair;
-  touch-action: pan-y;
+  touch-action: none;
 }
 .viewer:focus-visible { box-shadow: 0 0 0 3px var(--accent); }
-.viewer img { display: block; width: 100%; height: auto; max-height: min(76vh, 760px); object-fit: contain; user-select: none; -webkit-user-drag: none; }
+.viewer.is-dragging { cursor: grabbing; }
+.viewer img { display: block; width: 100%; height: auto; max-height: min(76vh, 760px); object-fit: contain; user-select: none; -webkit-user-drag: none; transform-origin: center center; will-change: transform; }
 .image-badge, .wheel-hint { position: absolute; padding: 7px 10px; border-radius: 8px; background: rgba(0,0,0,.68); color: #fff; font-size: 12px; }
 .image-badge { top: 12px; left: 12px; font-variant-numeric: tabular-nums; }
 .wheel-hint { right: 12px; bottom: 12px; color: #cbd7e3; opacity: .72; }

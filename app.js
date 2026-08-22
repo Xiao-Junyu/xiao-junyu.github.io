@@ -13,6 +13,9 @@
   let touchStartX = null;
   let wheelAccumulator = 0;
   let zoom = 1;
+  let panX = 0;
+  let panY = 0;
+  let pointerState = null;
 
   function currentSeries() { return STUDIES[studyIndex].series[seriesIndex]; }
   function updateSeriesOptions() {
@@ -44,7 +47,18 @@
     applyZoom();
   }
   function applyZoom() {
-    image.style.transform = `scale(${zoom})`;
+    applyTransform();
+  }
+  function clampPan() {
+    if (zoom <= 1) { panX = 0; panY = 0; return; }
+    const maxX = Math.max(0, (image.clientWidth * zoom - viewer.clientWidth) / 2);
+    const maxY = Math.max(0, (image.clientHeight * zoom - viewer.clientHeight) / 2);
+    panX = Math.max(-maxX, Math.min(maxX, panX));
+    panY = Math.max(-maxY, Math.min(maxY, panY));
+  }
+  function applyTransform() {
+    clampPan();
+    image.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${zoom})`;
     document.querySelector('#zoomReadout').textContent = `${Math.round(zoom * 100)}%`;
   }
   function changeZoom(delta) {
@@ -78,15 +92,15 @@
     updateSeriesOptions();
   }
 
-  studySelect.addEventListener('change', () => { studyIndex = Number(studySelect.value); seriesIndex = 0; sliceIndex = 0; updateSeriesOptions(); draw(); });
-  seriesSelect.addEventListener('change', () => { seriesIndex = Number(seriesSelect.value); sliceIndex = 0; draw(); });
+  studySelect.addEventListener('change', () => { studyIndex = Number(studySelect.value); seriesIndex = 0; sliceIndex = 0; panX = 0; panY = 0; updateSeriesOptions(); draw(); });
+  seriesSelect.addEventListener('change', () => { seriesIndex = Number(seriesSelect.value); sliceIndex = 0; panX = 0; panY = 0; draw(); });
   progress.addEventListener('input', () => { sliceIndex = Number(progress.value); draw(); });
   document.querySelector('#previous').addEventListener('click', () => go(-1));
   document.querySelector('#next').addEventListener('click', () => go(1));
   document.querySelector('#fullscreen').addEventListener('click', toggleFullscreen);
   document.querySelector('#zoomOut').addEventListener('click', () => changeZoom(-.1));
   document.querySelector('#zoomIn').addEventListener('click', () => changeZoom(.1));
-  document.querySelector('#zoomReset').addEventListener('click', () => { zoom = 1; applyZoom(); });
+  document.querySelector('#zoomReset').addEventListener('click', () => { zoom = 1; panX = 0; panY = 0; applyZoom(); });
   document.addEventListener('fullscreenchange', () => { document.querySelector('#fullscreen').textContent = document.fullscreenElement ? '⛶ 退出全屏' : '⛶ 全屏'; });
   document.addEventListener('webkitfullscreenchange', () => { document.querySelector('#fullscreen').textContent = document.webkitFullscreenElement ? '⛶ 退出全屏' : '⛶ 全屏'; });
   viewer.addEventListener('keydown', event => {
@@ -96,7 +110,7 @@
     if (event.key === 'End') { event.preventDefault(); sliceIndex = currentSeries().images.length - 1; draw(); }
     if (event.key === '+' || event.key === '=') { event.preventDefault(); changeZoom(.1); }
     if (event.key === '-' || event.key === '_') { event.preventDefault(); changeZoom(-.1); }
-    if (event.key === '0') { event.preventDefault(); zoom = 1; applyZoom(); }
+    if (event.key === '0') { event.preventDefault(); zoom = 1; panX = 0; panY = 0; applyZoom(); }
     if (event.key.toLowerCase() === 'f') { event.preventDefault(); toggleFullscreen(); }
   });
   viewer.addEventListener('wheel', event => {
@@ -107,13 +121,31 @@
     wheelAccumulator = 0;
     go(direction);
   }, { passive: false });
-  viewer.addEventListener('pointerdown', event => { touchStartX = event.clientX; viewer.setPointerCapture(event.pointerId); });
+  image.addEventListener('load', applyTransform);
+  viewer.addEventListener('pointerdown', event => {
+    touchStartX = event.clientX;
+    pointerState = { x: event.clientX, y: event.clientY, startPanX: panX, startPanY: panY, dragging: zoom > 1 };
+    if (pointerState.dragging) viewer.classList.add('is-dragging');
+    viewer.setPointerCapture(event.pointerId);
+  });
+  viewer.addEventListener('pointermove', event => {
+    if (!pointerState || !pointerState.dragging) return;
+    panX = pointerState.startPanX + event.clientX - pointerState.x;
+    panY = pointerState.startPanY + event.clientY - pointerState.y;
+    applyTransform();
+    event.preventDefault();
+  });
   viewer.addEventListener('pointerup', event => {
-    if (touchStartX === null) return;
+    if (!pointerState || touchStartX === null) return;
+    const wasDragging = pointerState.dragging;
     const distance = event.clientX - touchStartX;
+    pointerState = null;
     touchStartX = null;
+    viewer.classList.remove('is-dragging');
+    if (wasDragging) return;
     if (Math.abs(distance) > 35) go(distance < 0 ? 1 : -1);
   });
+  viewer.addEventListener('pointercancel', () => { pointerState = null; touchStartX = null; viewer.classList.remove('is-dragging'); });
   populateStudies();
   draw();
 })();
