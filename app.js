@@ -12,6 +12,7 @@
   let sliceIndex = 0;
   let touchStartX = null;
   let wheelAccumulator = 0;
+  let zoom = 1;
 
   function currentSeries() { return STUDIES[studyIndex].series[seriesIndex]; }
   function updateSeriesOptions() {
@@ -40,6 +41,26 @@
     [sliceIndex - 1, sliceIndex + 1].forEach(index => {
       if (index >= 0 && index < total) { const preload = new Image(); preload.src = series.images[index]; }
     });
+    applyZoom();
+  }
+  function applyZoom() {
+    image.style.transform = `scale(${zoom})`;
+    document.querySelector('#zoomReadout').textContent = `${Math.round(zoom * 100)}%`;
+  }
+  function changeZoom(delta) {
+    zoom = Math.max(.5, Math.min(3, Math.round((zoom + delta) * 10) / 10));
+    applyZoom();
+  }
+  async function toggleFullscreen() {
+    try {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        if (document.exitFullscreen) await document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      } else if (viewer.requestFullscreen) await viewer.requestFullscreen();
+      else if (viewer.webkitRequestFullscreen) viewer.webkitRequestFullscreen();
+    } catch (error) {
+      statusText.textContent = '全屏不可用';
+    }
   }
   function go(delta) {
     const total = currentSeries().images.length;
@@ -62,11 +83,21 @@
   progress.addEventListener('input', () => { sliceIndex = Number(progress.value); draw(); });
   document.querySelector('#previous').addEventListener('click', () => go(-1));
   document.querySelector('#next').addEventListener('click', () => go(1));
+  document.querySelector('#fullscreen').addEventListener('click', toggleFullscreen);
+  document.querySelector('#zoomOut').addEventListener('click', () => changeZoom(-.1));
+  document.querySelector('#zoomIn').addEventListener('click', () => changeZoom(.1));
+  document.querySelector('#zoomReset').addEventListener('click', () => { zoom = 1; applyZoom(); });
+  document.addEventListener('fullscreenchange', () => { document.querySelector('#fullscreen').textContent = document.fullscreenElement ? '⛶ 退出全屏' : '⛶ 全屏'; });
+  document.addEventListener('webkitfullscreenchange', () => { document.querySelector('#fullscreen').textContent = document.webkitFullscreenElement ? '⛶ 退出全屏' : '⛶ 全屏'; });
   viewer.addEventListener('keydown', event => {
     if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') { event.preventDefault(); go(-1); }
     if (event.key === 'ArrowRight' || event.key === 'ArrowDown') { event.preventDefault(); go(1); }
     if (event.key === 'Home') { event.preventDefault(); sliceIndex = 0; draw(); }
     if (event.key === 'End') { event.preventDefault(); sliceIndex = currentSeries().images.length - 1; draw(); }
+    if (event.key === '+' || event.key === '=') { event.preventDefault(); changeZoom(.1); }
+    if (event.key === '-' || event.key === '_') { event.preventDefault(); changeZoom(-.1); }
+    if (event.key === '0') { event.preventDefault(); zoom = 1; applyZoom(); }
+    if (event.key.toLowerCase() === 'f') { event.preventDefault(); toggleFullscreen(); }
   });
   viewer.addEventListener('wheel', event => {
     event.preventDefault();
